@@ -1,7 +1,7 @@
 
 
 const apiKey = '188c1e4cbb2436b445b96ecb75d1d03d';
-const city ="Dhaka";
+const city = "Dhaka";
 async function fetchWeatherData(){
   
   const response = await fetch(
@@ -9,8 +9,15 @@ async function fetchWeatherData(){
   
   const data =await response.json();
   console.log(data);
-  updateWeatherUI
+  updateWeatherUI(data)
 }
+
+const cityElement = document.querySelector(".city");
+const temperature = document.querySelector(".temp");
+const windElement = document.querySelector(".wind-speed");
+const humidityElement = document.querySelector(".humidity");
+const visibilityElement = document.querySelector(".visibility_distance");
+
 
 
 
@@ -18,6 +25,13 @@ async function fetchWeatherData(){
 fetchWeatherData();
 
 
-function updateWeatherUI(){
+function updateWeatherUI(data){
+  cityElement.textContent = data.name;
+  temperature.textContent = `${Math.round( data.main.temp)}`;
+  windElement.textContent = `${data.wind.speed} km/h`;
+  humidityElement.textContent =` ${data.main.humidity}%`;
+  visibilityElement.textContent =`${data.visibility/1000}km/h`;
+
+
 
 }

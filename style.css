@@ -61,9 +61,12 @@ opacity: 0.9;
   justify-content: center;
   flex-direction: column;
 }
-.temperature-info .tem{
+.temperature-info .temp{
   font-size: 10rem;
 
+}
+.temperature-info .temp .sup{
+  font-size:10rem ;
 }
 .temperature-info .description{
   display: flex;
