@@ -17,6 +17,8 @@ const temperature = document.querySelector(".temp");
 const windElement = document.querySelector(".wind-speed");
 const humidityElement = document.querySelector(".humidity");
 const visibilityElement = document.querySelector(".visibility_distance");
+const descriptionText = document.querySelector(".description");
+
 
 
 
@@ -31,6 +33,9 @@ function updateWeatherUI(data){
   windElement.textContent = `${data.wind.speed} km/h`;
   humidityElement.textContent =` ${data.main.humidity}%`;
   visibilityElement.textContent =`${data.visibility/1000}km/h`;
+ descriptionText.textContent = data.weather[0].description;
+
+
 
 
 
