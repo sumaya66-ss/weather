@@ -27,8 +27,10 @@ const temperature = document.querySelector(".temp");
 const windElement = document.querySelector(".wind-speed");
 const humidityElement = document.querySelector(".humidity");
 const visibilityElement = document.querySelector(".visibility_distance");
-const descriptionText = document.querySelector(".description");
+
 const date = document.querySelector(".date");
+const descriptionText = document.querySelector(".des-tex");
+const descriptionIcon = document.querySelector(".weather-icon");
 
 
 
@@ -50,7 +52,10 @@ function updateWeatherUI(data){
  const currentDate = new Date();
 
  date.textContent = currentDate.toDateString();
+  descriptionText.textContent = data.weather[0].description;
 
+const weatherIconName = getWeatherIconName(data.weather[0].main);
+descriptionIcon.textContent = weatherIconName;
 
 
 
@@ -66,3 +71,19 @@ formElement.addEventListener("submit",function(e){
     inputElement.value ="";
   }
 }) 
+function getWeatherIconName(weatherCondition){
+  const iconMap={  
+    Clear: "wb_sunny",
+Clouds: "wb_cloudy",
+Rain: "umbrella",
+Thunderstorm: "flash_on",
+Drizzle: "grain",
+Snow: "ac_unit",
+Mist: "cloud",
+Smoke: "cloud",
+Haze: "cloud",
+Fog: "cloud",
+
+  }
+  return iconMap[weatherCondition]||"help"
+}
